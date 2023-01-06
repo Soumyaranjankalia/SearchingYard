@@ -11,10 +11,12 @@ export const AllRoute = () => {
   const auth = localStorage.getItem("user");
   return (
     <>
-      <Routes element={<PrivateComponent />}>
+      <Routes >
+        <Route element={<PrivateComponent />}>
         <Route path="/" element={<TaskList />} />
         <Route path="/add" element={<AddTask />} />
         <Route path="/update/:id" element={<UpdateTask />} />
+        </Route>
       </Routes>
       <Routes>
         <Route path="/register" element={<SignUp />} />

@@ -11,13 +11,13 @@ export const TaskList = () => {
   }, []);
 
   const getTask = async () => {
-    let result = await fetch("http://localhost:5000/tasks");
+    let result = await fetch("https://jolly-puce-scarab.cyclic.app/tasks");
     result = await result.json();
     setTask(result);
   };
 
   const deleteTask = async (id) => {
-    let result = await fetch(`http://localhost:5000/tasks/${id}`, {
+    let result = await fetch(`https://jolly-puce-scarab.cyclic.app/tasks/${id}`, {
       method: "Delete",
     });
     result = await result.json();

@@ -12,14 +12,14 @@ export const UpdateTask = () => {
   }, []);
 
   const getTaskDetails = async () => {
-    let result = await fetch(`http://localhost:5000/tasks/${params.id}`);
+    let result = await fetch(`https://jolly-puce-scarab.cyclic.app/tasks/${params.id}`);
     result = await result.json();
     setTask(result.task);
     setDetails(result.details);
   };
 
   const updateTask = async () => {
-    let result = await fetch(`http://localhost:5000/tasks/${params.id}`, {
+    let result = await fetch(`https://jolly-puce-scarab.cyclic.app/tasks/${params.id}`, {
       method: "put",
       body: JSON.stringify({ task, details }),
       headers: {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [name, setName] = useState("");
@@ -16,7 +16,7 @@ export const SignUp = () => {
 
   const collectData = async () => {
     console.warn(name, email, password);
-    let result = await fetch("http://localhost:5000/register", {
+    let result = await fetch("https://jolly-puce-scarab.cyclic.app/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
@@ -56,6 +56,10 @@ export const SignUp = () => {
       <button className="appButton" onClick={collectData}>
         Sign Up
       </button>
+      <div>
+        <h5>Already Member ?</h5>
+          <Link to="/login"><button className="appButton">Login</button></Link>
+      </div>
     </div>
   );
 };

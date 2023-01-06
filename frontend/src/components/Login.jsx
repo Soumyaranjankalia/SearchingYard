@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export const Login = () => {
   }, []);
 
   const handelLogin = async () => {
-    let result = await fetch("http://localhost:5000/login", {
+    let result = await fetch("https://jolly-puce-scarab.cyclic.app/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
@@ -51,6 +51,12 @@ export const Login = () => {
       <button className="appButton" onClick={handelLogin}>
         Login
       </button>
+      <div>
+        <h5>New Here ?</h5>
+        <Link to="/register">
+          <button className="appButton">Register</button>
+        </Link>
+      </div>
     </div>
   );
 };

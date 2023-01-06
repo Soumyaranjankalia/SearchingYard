@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AddTask = () => {
   const [task, setTask] = React.useState("");
   const [details, setDetails] = React.useState("");
+  const navigate = useNavigate();
 
   const addTask = async () => {
-    let result = await fetch("http://localhost:5000/add-task", {
+    let result = await fetch("https://jolly-puce-scarab.cyclic.app/add-task", {
       method: "post",
       body: JSON.stringify({ task, details }),
       headers: {
@@ -15,6 +17,7 @@ export const AddTask = () => {
     });
     result = await result.json();
     alert("Task Added");
+    navigate("/");
   };
 
   return (

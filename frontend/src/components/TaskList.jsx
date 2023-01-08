@@ -27,14 +27,38 @@ export const TaskList = () => {
     }
   };
 
+  const sortTask = () => {
+    let res = [...task];
+    res.sort((a, b) => {
+      const dateA = new Date(a.deadline);
+      const dateB = new Date(b.deadline);
+      return dateA - dateB;
+    });
+    setTask(res);
+  };
+
+  const sortTaskB = () => {
+    let res = [...task];
+    res.sort((a, b) => {
+      const dateA = new Date(b.deadline);
+      const dateB = new Date(a.deadline);
+      return dateA - dateB;
+    });
+    setTask(res);
+  }
+
   return (
     <>
       <div className="task-list">
         <h3>Task List</h3>
+        <button onClick={sortTask}>SortA</button>
+        <button onClick={sortTaskB}>SortB</button>
+
         <ul>
           <li>S. No</li>
           <li>Task Name</li>
           <li>Task Detals</li>
+          <li>Deadline</li>
           <li>Operation</li>
         </ul>
         {task.length > 0 ? (
@@ -42,11 +66,15 @@ export const TaskList = () => {
             <ul key={e._id}>
               <li>{i + 1}</li>
               <li>{e.task}</li>
-              <li>{e.details}</li>
+              <li className="taskDetails">{e.details}</li>
+              <li>{e.deadline}</li>
               <li>
                 <button onClick={() => deleteTask(e._id)}>Delete</button>
                 <Link to={"/update/" + e._id}>
                   <button>Update</button>
+                </Link>
+                <Link to={"/view/" + e._id}>
+                  <button>View</button>
                 </Link>
               </li>
             </ul>
@@ -55,6 +83,8 @@ export const TaskList = () => {
           <h1>No Result Found</h1>
         )}
       </div>
+
+      
     </>
   );
 };

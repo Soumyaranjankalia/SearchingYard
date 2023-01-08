@@ -174,3 +174,7 @@
   border: 1px solid skyblue;
   padding: 5px;
 }
+
+.taskDetails{
+  overflow: hidden;
+}

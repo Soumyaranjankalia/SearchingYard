@@ -8,9 +8,6 @@ function App() {
     <div className="App">
       <Nav/>
       <AllRoute/>
-      <h1 className=" bg-red-500  underline">
-      Hello world!
-    </h1>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const ViewTask = () => {
   const [task, setTask] = useState({});
@@ -16,9 +16,10 @@ export const ViewTask = () => {
     setTask(result);
   };
   return (
-    <div>
-      <p>{task.task}</p>
+    <div style={{textAlign:"center"}}>
+      <h3>{task.task}</h3>
       <p>{task.details}</p>
+      <Link to={"/update/"+task._id}><button>Update Task</button></Link>
     </div>
   );
 };
